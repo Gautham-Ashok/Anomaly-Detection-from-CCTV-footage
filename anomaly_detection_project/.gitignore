@@ -1,0 +1,6 @@
+.venv/
+.idea/
+__pycache__/
+*.h5
+*.png
+saved_models/
