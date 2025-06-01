@@ -12,24 +12,23 @@ To detect and classify abnormal human activities in CCTV footage using pretraine
 
 ##  Project Structure
 cctv-anomaly-detection/
-│
-├── dataset/
-│ ├── Anomaly Part 1/
-│ │ └── Anomaly-Videos-Part-1/
-│ │ ├── Abuse/
-│ │ ├── Arson/
-│ │ ├── Arrest/
-│ │ └── Assault/
-│ ├── Anomaly Part 2/
-│ ├── Anomaly Part 3/
-│ └── Anomaly Part 4/
-│
-├── extracted_frames.py # Extracts frames from videos
-├── train_model.py # Trains ML model on the dataset
-├── predict.py # Performs inference on new frames
-├── utils.py # Helper functions
-├── requirements.txt
-└── README.md
+
+ dataset/
+ Anomaly Part 1/
+ Anomaly-Videos-Part-1/
+ Abuse/
+ Arson/
+ Arrest/
+ Assault/
+ Anomaly Part 2/
+ Anomaly Part 3/
+ Anomaly Part 4/│
+ extracted_frames.py # Extracts frames from videos
+ train_model.py # Trains ML model on the dataset
+ predict.py # Performs inference on new frames
+ utils.py # Helper functions
+ requirements.txt
+README.md
 
 ---
 
