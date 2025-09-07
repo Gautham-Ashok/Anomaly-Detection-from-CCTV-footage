@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+anomaly_venv/
+venv/
+env/
+.env/
+
+# IDE/editor folders
+.vscode/
+.idea/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Data folders and files to exclude
+data/raw/
+data/processed/features/
+data/processed/*.pkl
+data/processed/*.png
+data/processed/models/*.joblib
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Ignore frontend build/dist artifacts if any
+frontend/build/
+frontend/dist/
