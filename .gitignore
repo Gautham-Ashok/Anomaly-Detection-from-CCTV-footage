@@ -29,7 +29,7 @@ data/raw/
 data/processed/features/
 data/processed/*.pkl
 data/processed/*.png
-data/processed/models/*.joblib
+
 
 # OS files
 .DS_Store
