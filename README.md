@@ -1,122 +1,187 @@
-#  CCTV Anomaly Detection using Machine Learning
+# CCTV Anomaly Detection System
 
-This project implements a machine learning-based anomaly detection system to identify suspicious or abnormal activities captured in CCTV surveillance footage. The goal is to assist in real-time monitoring and safety enforcement by classifying frames from security videos into categories of anomalies such as abuse, arson, arrest, and assault.
-
----
-
-##  Objective
-
-To detect and classify abnormal human activities in CCTV footage using pretrained machine learning models. The system processes video data, extracts frames, and uses deep learning models for multi-class classification of anomalies.
+[Live Demo](https://anomaly-detection-from-cctv-footage.onrender.com)
 
 ---
 
-##  Project Structure
-cctv-anomaly-detection/
+## Table of Contents
 
- dataset/
- Anomaly Part 1/
- Anomaly-Videos-Part-1/
- Abuse/
- Arson/
- Arrest/
- Assault/
- Anomaly Part 2/
- Anomaly Part 3/
- Anomaly Part 4/│
- extracted_frames.py # Extracts frames from videos
- train_model.py # Trains ML model on the dataset
- predict.py # Performs inference on new frames
- utils.py # Helper functions
- requirements.txt
-README.md
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Model Training](#model-training)
+- [Deployment](#deployment)
+- [Project Structure](#project-structure)
+- [Results and Evaluation](#results-and-evaluation)
+- [Future Work](#future-work)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ---
 
-##  How It Works
+## Project Overview
 
-1. **Frame Extraction**  
-   - Videos are read from multiple folders categorized by anomaly type.
-   - Frames are extracted every few seconds and saved for training/testing.
-   - Handles nested folders with video clips.
-
-2. **Model Training**  
-   - CNN-based models like ResNet50, DenseNet, and eXception are used.
-   - Models are fine-tuned using transfer learning.
-   - Input: extracted frames labeled by their source folder name.
-
-3. **Prediction**  
-   - Trained models are used to classify new video frames.
-   - Predicts whether the frame is normal or an anomaly class.
-
-4. **Evaluation**  
-   - Accuracy, confusion matrix, and F1 score are used for performance evaluation.
+This project is an end-to-end machine learning system that detects anomalies in CCTV video footage. It aims to identify suspicious or abnormal human activities such as abuse, arson, arrest, and assault through multi-class classification of video frames. The system extracts frames from video streams, processes them through pretrained models, and classifies each frame for real-time monitoring and public safety assistance.
 
 ---
 
-## Technologies Used
+## Features
 
-- **Python 3.10+**
-- **TensorFlow / Keras**
-- **OpenCV**
-- **NumPy**
-- **Matplotlib**
-- **Scikit-learn**
-
----
-
-##  ML Models Used
-
-- **ResNet50**
-- **DenseNet121**
-- **eXception**
-- Custom layers added for anomaly classification.
-- Optimized using categorical crossentropy and Adam optimizer.
+- Upload CCTV videos via a user-friendly web interface (drag & drop or file select)
+- Detect and classify anomalies using a pretrained machine learning model backend
+- Visualize anomaly categories with confidence scores and detailed probability bars
+- System status display showing model health and loaded categories
+- Responsive single-page frontend with embedded CSS and JavaScript
+- REST API based on Flask for backend processing
+- Deployment-ready, with live demo hosted on Render.com
 
 ---
 
-##  How to Run
+## Technologies
 
-1. **Clone the repository**
-   ```bash
+- Python 3.10+
+- Flask & Flask-CORS (backend API)
+- Scikit-learn, joblib (model training and serialization)
+- OpenCV (video frame extraction and processing)
+- NumPy, pandas, matplotlib, seaborn (data handling and visualization)
+- Gunicorn (production WSGI server)
+- HTML, CSS, JavaScript (single-page frontend UI)
+- Deployment with Render.com
 
-   git clone https://github.com/yourusername/cctv-anomaly-detection.git
-   cd cctv-anomaly-detection
-Install required packages
+---
 
-bash
-Copy
-Edit
+## Installation
+
+### Prerequisites
+
+- Python 3.10 or higher installed
+- Git installed
+
+### Clone the Repository
+git clone https://github.com/Gautham-Ashok/Anomaly-Detection-from-CCTV-footage.git
+cd Anomaly-Detection-from-CCTV-footage
+
+
+### Create and Activate Virtual Environment
+python -m venv anomaly_venv
+Windows
+anomaly_venv\Scripts\activate
+
+macOS/Linux
+source anomaly_venv/bin/activate
+
+### Install Dependencies
+
 pip install -r requirements.txt
-Extract frames from video dataset
 
-bash
-Copy
-Edit
+---
+
+## Usage
+
+### Running Locally
+
+Start the Flask backend server:
+
+python api/app.py
+
+Open [http://localhost:5000](http://localhost:5000) in your browser.
+
+### Using the Web UI
+
+- Upload CCTV video files (supported formats: `.mp4`, `.avi`, `.mov`, `.mkv`, `.webm`)
+- Wait for the model to analyze and display detection results with confidence scores
+- View system status for model health and loaded categories
+
+---
+
+## Model Training
+
+If you want to retrain or improve the model:
+
+1. Extract frames from videos:
+
 python extracted_frames.py
-Train the model
 
-bash
-Copy
-Edit
+
+2. Train model on prepared data:
+
 python train_model.py
-Run inference on new data
 
-bash
-Copy
-Edit
-python predict.py Output
-Extracted frames saved in frames/
+3. Evaluate model:
 
-Trained model saved as .h5 file
+python scripts/evaluate_model.py
 
-Inference results printed and optionally saved with class labels
+Trained models are saved as `.joblib` files under `data/processed/models/`.
 
-🔮 Future Scope
-Add real-time detection via webcam or IP camera
+---
 
-Deploy on Raspberry Pi for edge applications
+## Deployment
 
-Integrate with alert system via SMS/email
+This project is deployed live on [Render.com](https://anomaly-detection-from-cctv-footage.onrender.com).
 
-Use advanced models like YOLOv8 for faster detection
+- The repository contains a `Procfile` and `requirements.txt` to facilitate deployment
+- Backend runs with Gunicorn and Flask in production mode on Render
+- Frontend can be served via Flask backend or any static hosting service
+- Ensure frontend API URLs point to deployed backend domain
 
+---
+
+## Project Structure
+
+/api # Flask backend code
+/data # Data files & trained models
+/frontend # Frontend (index.html with embedded CSS & JS)
+/scripts # Helper scripts for training and evaluation
+/requirements.txt # Python dependencies
+/Procfile # Deployment configuration for Render
+/README.md # Project documentation (this file)
+
+
+---
+
+## Results and Evaluation
+
+The model performance on test data includes:
+- Overall Accuracy: ~81%
+- Weighted F1 Score: ~80%
+- Per-class performance metrics for categories such as normal, road accidents, robbery, and abuse
+- Confusion matrices and other visual evaluation artifacts generated during training
+
+---
+
+## Future Work
+
+- Real-time detection with IP cameras or webcams
+- SMS/email alert integration for detected anomalies
+- Edge deployment on lightweight devices such as Raspberry Pi
+- Integration of more advanced anomaly detection models like YOLOv8
+- Expansion of anomaly categories and dataset size for robustness
+
+---
+
+## Contributing
+
+Contributions are welcome! Feel free to fork, submit issues, or create pull requests for bugfixes, features, or improvements.
+
+---
+
+## License
+
+This project is released under the MIT License.
+
+---
+
+## Contact
+
+For questions, support, or collaborations, please open an issue or contact the repository owner.
+
+---
+
+**Live Demo:** [https://anomaly-detection-from-cctv-footage.onrender.com](https://anomaly-detection-from-cctv-footage.onrender.com)
+
+---
+
+*Developed with ❤️ for safer communities.*
